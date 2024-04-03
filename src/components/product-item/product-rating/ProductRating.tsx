@@ -5,11 +5,11 @@ export const ProductRating = () => {
 
 	return (
 		<>
-			{rate.map(el => {
+			{rate.map((el, index) => {
 				return el === 1 ? (
-					<MdOutlineStar size={18} color='#fcbf49' />
+					<MdOutlineStar key={index} size={18} color='#fcbf49' />
 				) : (
-					<MdOutlineStarOutline size={18} color='#fcbf49' />
+					<MdOutlineStarOutline key={index} size={18} color='#fcbf49' />
 				)
 			})}
 		</>

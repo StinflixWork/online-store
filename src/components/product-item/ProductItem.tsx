@@ -1,4 +1,4 @@
-import { IProductMobile } from 'interfaces/product.interface.ts'
+import { IProduct } from 'interfaces/product.interface.ts'
 import { FC } from 'react'
 import { formatCurrency } from 'utils/formatCurrency.ts'
 
@@ -8,7 +8,7 @@ import { ProductRating } from './product-rating/ProductRating.tsx'
 import { ProductStatus } from './product-status/ProductStatus.tsx'
 
 type TypeProps = {
-	product: IProductMobile
+	product: IProduct
 }
 
 const ProductItem: FC<TypeProps> = ({ product }) => {
@@ -16,9 +16,8 @@ const ProductItem: FC<TypeProps> = ({ product }) => {
 
 	return (
 		<div
-			className='w-[270px] flex flex-col gap-y-5 relative group/card
-			border border-solid border-gray-300 border-l-transparent p-4 first:border-l-gray-300
-			hover:shadow-card hover:border-none'
+			className='group/card w-[270px] flex flex-col gap-y-5 relative p-4
+			border border-solid border-gray-300 hover:shadow-card'
 		>
 			<ProductImages images={product.images} />
 			<div className='flex flex-col gap-y-2.5'>
@@ -37,8 +36,8 @@ const ProductItem: FC<TypeProps> = ({ product }) => {
 				<div className='flex items-center gap-x-2'>
 					<ProductStatus inStock={product.inStock} />
 				</div>
-				<div className='hidden group-hover/card:block'>
-					<p className='text-[12px] leading-5 text-gray-900'>{product.summaryDescription}</p>
+				<div>
+					<p className='text-[12px] text-gray-800 leading-5'>{product.summaryDescription}</p>
 				</div>
 			</div>
 		</div>

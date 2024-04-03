@@ -8,6 +8,7 @@ export default defineConfig({
 			assets: '/src/assets/',
 			components: '/src/components/',
 			data: '/src/data/',
+			hooks: '/src/hooks/',
 			interfaces: '/src/interfaces/',
 			styles: '/src/styles/',
 			utils: '/src/utils/'
