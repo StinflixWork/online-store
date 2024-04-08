@@ -1,5 +1,7 @@
-import { IProduct } from 'interfaces/product.interface.ts'
 import { FC } from 'react'
+
+import { IProduct } from 'interfaces/product.interface.ts'
+
 import { formatCurrency } from 'utils/formatCurrency.ts'
 
 import { ProductActions } from './product-actions/ProductActions.tsx'

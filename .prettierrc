@@ -9,8 +9,13 @@
   "useTabs": true,
   "plugins": ["@trivago/prettier-plugin-sort-imports"],
   "importOrder": [
+    "^react",
     "^@core/(.*)$",
+    "^data/(.*)$",
     "<THIRD_PARTY_MODULES>",
+    "^hooks/(.*)$",
+    "^interfaces/(.*)$",
+    "^utils/(.*)$",
     "^pages/(.*)$",
     "^components/(.*)$",
     "^[../]",

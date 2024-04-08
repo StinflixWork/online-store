@@ -1,5 +1,6 @@
-import { useSelectAllProducts } from 'hooks/useSelectAllProducts.ts'
 import { ReactNode, useState } from 'react'
+
+import { useSelectAllProducts } from 'hooks/useSelectAllProducts.ts'
 
 import { Header } from 'components/header/Header.tsx'
 import { NotFoundProductsElement } from 'components/not-found/NotFoundProductsElement.tsx'

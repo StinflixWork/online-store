@@ -1,5 +1,6 @@
-import { TypeImage } from 'interfaces/product.interface.ts'
 import { FC } from 'react'
+
+import { TypeImage } from 'interfaces/product.interface.ts'
 
 type TypeProps = {
 	images: TypeImage[]

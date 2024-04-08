@@ -1,8 +1,10 @@
+import { FC, useState } from 'react'
+
 import { AutoComplete } from 'antd'
 import Search from 'antd/es/input/Search'
 import { SearchProps } from 'antd/lib/input'
+
 import { useSelectAllProducts } from 'hooks/useSelectAllProducts.ts'
-import { FC, useState } from 'react'
 
 type TypeProps = {
 	setSearch: (search: string) => void
