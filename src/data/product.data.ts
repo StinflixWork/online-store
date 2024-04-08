@@ -1,6 +1,6 @@
 import { IProductList } from 'interfaces/product.interface.ts'
 
-export const productData: IProductList = {
+export let productData: IProductList = {
 	computers: [
 		{
 			id: 1,
