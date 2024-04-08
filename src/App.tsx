@@ -1,7 +1,8 @@
 import { useSelectAllProducts } from 'hooks/useSelectAllProducts.ts'
-import { useState } from 'react'
+import { ReactNode, useState } from 'react'
 
 import { Header } from 'components/header/Header.tsx'
+import { NotFoundProductsElement } from 'components/not-found/NotFoundProductsElement.tsx'
 import ProductItem from 'components/product-item/ProductItem.tsx'
 
 function App() {
@@ -13,10 +14,22 @@ function App() {
 		.filter(filteredItem => filteredItem.title.toLocaleLowerCase().includes(search))
 		.map(item => <ProductItem key={item.id} product={item} />)
 
+	let catalogContent: ReactNode
+
+	if (!productsItems.length) {
+		if (search === '') {
+			catalogContent = <p>Loading</p>
+		} else {
+			catalogContent = <NotFoundProductsElement text={search} />
+		}
+	} else {
+		catalogContent = productsItems
+	}
+
 	return (
 		<div className='min-h-full pb-52'>
 			<Header setSearch={setSearch} />
-			<div className='flex flex-wrap px-5'>{productsItems}</div>
+			<div className='flex flex-wrap px-5'>{catalogContent}</div>
 		</div>
 	)
 }
