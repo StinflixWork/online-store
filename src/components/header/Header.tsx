@@ -1,10 +1,13 @@
 import { FC, useState } from 'react'
+import { GiFlowers } from 'react-icons/gi'
 
-import { AutoComplete } from 'antd'
-import Search from 'antd/es/input/Search'
 import { SearchProps } from 'antd/lib/input'
 
 import { useSelectAllProducts } from 'hooks/useSelectAllProducts.ts'
+
+import { Logo } from 'components/logo/Logo.tsx'
+
+import { SearchField } from './search-field/SearchField.tsx'
 
 type TypeProps = {
 	setSearch: (search: string) => void
@@ -33,10 +36,15 @@ export const Header: FC<TypeProps> = ({ setSearch }) => {
 	}
 
 	return (
-		<header className='h-20 px-5 flex items-center'>
-			<AutoComplete style={{ width: 350 }} options={options} onSearch={handleSearch}>
-				<Search onSearch={onSearch} placeholder='Я шукаю...' allowClear enterButton='Знайти' />
-			</AutoComplete>
+		<header className='flex flex-col'>
+			<div className='h-8 px-5 bg-[#b4ffe8] flex items-center justify-center gap-x-1.5'>
+				<p className='font-semibold uppercase text-[#222222]'>квітнуть знижки повесні</p>
+				<GiFlowers />
+			</div>
+			<div className='h-20 px-5 flex items-center justify-between bg-[#222222]'>
+				<Logo />
+				<SearchField options={options} handleSearch={handleSearch} onSearchChange={onSearch} />
+			</div>
 		</header>
 	)
 }

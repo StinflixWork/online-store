@@ -30,7 +30,9 @@ function App() {
 	return (
 		<div className='min-h-full pb-52'>
 			<Header setSearch={setSearch} />
-			<div className='flex flex-wrap px-5'>{catalogContent}</div>
+			<main className='py-7'>
+				<div className='flex flex-wrap px-5'>{catalogContent}</div>
+			</main>
 		</div>
 	)
 }
