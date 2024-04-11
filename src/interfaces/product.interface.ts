@@ -7,6 +7,7 @@ export interface IProduct {
 	rate: number
 	price: number
 	inStock: boolean
+	isFavourite: boolean
 	images: TypeImage[]
 	yearOfRelease: number
 }
@@ -88,17 +89,15 @@ export interface IProductGaming extends IProduct {
 	kit: string
 }
 
-export interface IProductList {
-	computers: IProductComputer[]
-	laptops: IProductLaptop[]
-	mobiles: IProductMobile[]
-	TVs: IProductTV[]
-	gaming: IProductGaming[]
-}
-
 // types
 type TypeCategory = 'computer' | 'laptop' | 'mobile' | 'tv' | 'gaming'
 export type TypeImage = {
 	src: string
 	alt: string
 }
+export type TypeProductList =
+	| IProductComputer
+	| IProductLaptop
+	| IProductMobile
+	| IProductTV
+	| IProductGaming

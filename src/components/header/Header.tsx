@@ -2,8 +2,9 @@ import { FC, useState } from 'react'
 import { GiFlowers } from 'react-icons/gi'
 
 import { SearchProps } from 'antd/lib/input'
+import { selectAllProducts } from 'store/selectors/catalogSelectors.ts'
 
-import { useSelectAllProducts } from 'hooks/useSelectAllProducts.ts'
+import { useAppSelector } from 'hooks/store-hooks.ts'
 
 import { Logo } from 'components/logo/Logo.tsx'
 
@@ -15,7 +16,7 @@ type TypeProps = {
 
 export const Header: FC<TypeProps> = ({ setSearch }) => {
 	const [options, setOptions] = useState<{ value: string }[]>([])
-	const allListProducts = useSelectAllProducts()
+	const products = useAppSelector(selectAllProducts)
 
 	const onSearch: SearchProps['onSearch'] = (value, _e) =>
 		setSearch(value.trim().toLocaleLowerCase())
@@ -23,7 +24,7 @@ export const Header: FC<TypeProps> = ({ setSearch }) => {
 	// autocomplete, знайдені запроси зробити посиланням
 	const handleSearch = (searchText: string) => {
 		if (searchText) {
-			const filteredProductsTitles = allListProducts
+			const filteredProductsTitles = products
 				.filter(product =>
 					product.title.toLocaleLowerCase().includes(searchText.toLocaleLowerCase())
 				)

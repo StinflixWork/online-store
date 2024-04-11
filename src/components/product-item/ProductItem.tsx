@@ -1,5 +1,9 @@
 import { FC } from 'react'
 
+import { toggleFavouriteProducts } from 'store/slices/catalogSlice.ts'
+
+import { useAppDispatch } from 'hooks/store-hooks.ts'
+
 import { IProduct } from 'interfaces/product.interface.ts'
 
 import { formatCurrency } from 'utils/formatCurrency.ts'
@@ -13,8 +17,13 @@ type TypeProps = {
 	product: IProduct
 }
 
-const ProductItem: FC<TypeProps> = ({ product }) => {
+export const ProductItem: FC<TypeProps> = ({ product }) => {
 	const price = formatCurrency(product.price)
+	const dispatch = useAppDispatch()
+
+	const handleSaveToFavourite = () => {
+		dispatch(toggleFavouriteProducts(product.id))
+	}
 
 	return (
 		<div className='w-[270px] relative'>
@@ -35,7 +44,10 @@ const ProductItem: FC<TypeProps> = ({ product }) => {
 					</div>
 					<div className='flex items-center justify-between'>
 						<p className='text-gray-700 font-medium text-xl'>{price}</p>
-						<ProductActions />
+						<ProductActions
+							isFavourite={product.isFavourite}
+							setFavourite={handleSaveToFavourite}
+						/>
 					</div>
 					<div className='flex items-center gap-x-2'>
 						<ProductStatus inStock={product.inStock} />
@@ -48,5 +60,3 @@ const ProductItem: FC<TypeProps> = ({ product }) => {
 		</div>
 	)
 }
-
-export default ProductItem
