@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 
 import catalogReducer from './slices/catalogSlice'
+import filtersReducer from './slices/filtersSlice'
 
 export const store = configureStore({
 	reducer: {
-		catalog: catalogReducer
+		catalog: catalogReducer,
+		filters: filtersReducer
 	}
 })
 

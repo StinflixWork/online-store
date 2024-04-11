@@ -1,25 +1,23 @@
-import { FC, useState } from 'react'
+import { useState } from 'react'
 import { GiFlowers } from 'react-icons/gi'
 
 import { SearchProps } from 'antd/lib/input'
 import { selectAllProducts } from 'store/selectors/catalogSelectors.ts'
+import { setSearchFilter } from 'store/slices/filtersSlice.ts'
 
-import { useAppSelector } from 'hooks/store-hooks.ts'
+import { useAppDispatch, useAppSelector } from 'hooks/store-hooks.ts'
 
 import { Logo } from 'components/logo/Logo.tsx'
 
 import { SearchField } from './search-field/SearchField.tsx'
 
-type TypeProps = {
-	setSearch: (search: string) => void
-}
-
-export const Header: FC<TypeProps> = ({ setSearch }) => {
+export const Header = () => {
 	const [options, setOptions] = useState<{ value: string }[]>([])
 	const products = useAppSelector(selectAllProducts)
+	const dispatch = useAppDispatch()
 
 	const onSearch: SearchProps['onSearch'] = (value, _e) =>
-		setSearch(value.trim().toLocaleLowerCase())
+		dispatch(setSearchFilter(value.trim().toLocaleLowerCase()))
 
 	// autocomplete, знайдені запроси зробити посиланням
 	const handleSearch = (searchText: string) => {

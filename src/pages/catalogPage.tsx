@@ -1,30 +1,28 @@
-import { FC, ReactNode } from 'react'
+import { ReactNode } from 'react'
 
 import { selectAllProducts } from 'store/selectors/catalogSelectors.ts'
+import { selectFilters } from 'store/selectors/filtersSelectors.ts'
 
 import { useAppSelector } from 'hooks/store-hooks.ts'
 
 import { NotFoundProductsElement } from 'components/not-found/NotFoundProductsElement.tsx'
 import { ProductItem } from 'components/product-item/ProductItem.tsx'
 
-type TypeProps = {
-	search: string
-}
-
-export const CatalogPage: FC<TypeProps> = ({ search }) => {
+export const CatalogPage = () => {
 	const allListProducts = useAppSelector(selectAllProducts)
+	const filters = useAppSelector(selectFilters)
 
 	const productsItems = allListProducts
-		.filter(filteredItem => filteredItem.title.toLocaleLowerCase().includes(search))
+		.filter(filteredItem => filteredItem.title.toLocaleLowerCase().includes(filters.search))
 		.map(item => <ProductItem key={item.id} product={item} />)
 
 	let catalogContent: ReactNode
 
 	if (!productsItems.length) {
-		if (search === '') {
+		if (filters.search === '') {
 			catalogContent = <p>Loading</p>
 		} else {
-			catalogContent = <NotFoundProductsElement text={search} />
+			catalogContent = <NotFoundProductsElement text={filters.search} />
 		}
 	} else {
 		catalogContent = productsItems
