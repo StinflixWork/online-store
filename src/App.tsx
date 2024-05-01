@@ -1,6 +1,6 @@
 import { Header } from 'components/header/Header.tsx'
 
-import { CatalogPage, FavouritePage } from './pages'
+import { CatalogPage } from './pages'
 
 function App() {
 	return (
@@ -8,7 +8,6 @@ function App() {
 			<Header />
 			<main className='py-7'>
 				<CatalogPage />
-				<FavouritePage />
 			</main>
 		</div>
 	)

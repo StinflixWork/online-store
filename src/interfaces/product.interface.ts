@@ -13,6 +13,7 @@ export interface IProduct {
 }
 
 export interface IProductComputer extends IProduct {
+	brand: string
 	cpu: string
 	gpu: string
 	ram: string

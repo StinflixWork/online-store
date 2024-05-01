@@ -2,8 +2,8 @@ import { useState } from 'react'
 import { GiFlowers } from 'react-icons/gi'
 
 import { SearchProps } from 'antd/lib/input'
-import { selectAllProducts } from 'store/selectors/catalogSelectors.ts'
-import { setSearchFilter } from 'store/slices/filtersSlice.ts'
+import { selectBySearchProducts } from 'store/selectors/catalogSelectors.ts'
+import { setSearch } from 'store/slices/filterSlice.ts'
 
 import { useAppDispatch, useAppSelector } from 'hooks/store-hooks.ts'
 
@@ -13,20 +13,18 @@ import { SearchField } from './search-field/SearchField.tsx'
 
 export const Header = () => {
 	const [options, setOptions] = useState<{ value: string }[]>([])
-	const products = useAppSelector(selectAllProducts)
+	const productsBySearchQuery = useAppSelector(selectBySearchProducts)
 	const dispatch = useAppDispatch()
 
 	const onSearch: SearchProps['onSearch'] = (value, _e) =>
-		dispatch(setSearchFilter(value.trim().toLocaleLowerCase()))
+		dispatch(setSearch(value.trim().toLocaleLowerCase()))
 
 	// autocomplete, знайдені запроси зробити посиланням
 	const handleSearch = (searchText: string) => {
 		if (searchText) {
-			const filteredProductsTitles = products
-				.filter(product =>
-					product.title.toLocaleLowerCase().includes(searchText.toLocaleLowerCase())
-				)
-				.map(filteredProduct => ({ value: filteredProduct.title }))
+			const filteredProductsTitles = productsBySearchQuery.map(filteredProduct => ({
+				value: filteredProduct.title
+			}))
 
 			setOptions(filteredProductsTitles)
 		} else {

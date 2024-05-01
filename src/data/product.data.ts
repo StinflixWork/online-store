@@ -11,6 +11,7 @@ export const productData: TypeProductList[] = [
 		category: 'computer',
 		rate: 5,
 		price: 28599,
+		brand: 'other',
 		inStock: true,
 		isFavourite: false,
 		images: [
@@ -74,7 +75,7 @@ export const productData: TypeProductList[] = [
 		rate: 4,
 		price: 55999,
 		inStock: true,
-		isFavourite: true,
+		isFavourite: false,
 		images: [
 			{
 				src: '/products/mobile/iphone15-pro-max.webp',
@@ -157,7 +158,7 @@ export const productData: TypeProductList[] = [
 		rate: 5,
 		price: 20999,
 		inStock: true,
-		isFavourite: true,
+		isFavourite: false,
 		images: [
 			{
 				src: '/products/gaming/playstation5.webp',
@@ -171,5 +172,63 @@ export const productData: TypeProductList[] = [
 		gpu: 'AMD Radeon RDNA 2, 2.23 ГГц (10.3 терафлопс)',
 		memory: '1Тб',
 		kit: 'Ігрова консоль, Геймпад, Кабель живлення, Інструкція, Гарантія'
+	},
+	{
+		id: 6,
+		title: 'Мобільний телефон Samsung Galaxy S24 8/256GB Marble Gray (SM-S921BZAGEUC)',
+		summaryDescription:
+			'Екран (6.2", Dynamic AMOLED 2X, 2340x1080) / Samsung Exynos 2400 for Galaxy (3.1 ГГц + 2.9 ГГц + 2.6 ГГц + 1.8 ГГц) / потрійна основна камера: 50 Мп + 12 Мп + 10 Мп, фронтальна 12 Мп / RAM 8 ГБ / 256 ГБ вбудованої пам\'яті / 3G / LTE / 5G / GPS / підтримка 2х SIM-карток (Nano-SIM) / Android 14 / 4000 мА * год',
+		description:
+			'Більший екран. Ємніший акумулятор. Потужніший процесор. Ви закохаєтеся в Galaxy S24 та S24+ з першого погляду. А відтепер Galaxy S24+ оснащено дисплеєм із найбільшою роздільною здатністю з-поміж усіх пристроїв Galaxy – QHD+.',
+		category: 'mobile',
+		rate: 5,
+		price: 39999,
+		inStock: true,
+		isFavourite: false,
+		images: [
+			{
+				src: '/products/mobile/samsung-s24.webp',
+				alt: 'Samsung S24'
+			},
+			{
+				src: '/products/mobile/samsung-s24-2.webp',
+				alt: 'Samsung S24'
+			}
+		],
+		yearOfRelease: 2024,
+		brand: 'Samsung',
+		model: 'Galaxy S24',
+		color: 'Marble Gray',
+		screen: {
+			diagonals: 6.2,
+			resolution: '2340x1080',
+			matrix: 'Dynamic AMOLED 2X',
+			screenRefreshRate: '120Гц'
+		},
+		simCard: {
+			count: 2,
+			format: 'Nano-SIM, e-SIM'
+		},
+		os: 'Android',
+		camera: {
+			front: '12 Мп',
+			back: '50 Мп + 12 Мп + 10 Мп'
+		},
+		cpu: {
+			model: 'Samsung Exynos 2400 for Galaxy',
+			numberOfCores: 10
+		},
+		gpu: 'Samsung Xclipse 940',
+		memory: {
+			integrated: '256ГБ',
+			ram: '8ГБ'
+		},
+		size: {
+			weight: 168,
+			width: 70.6,
+			height: 147,
+			depth: 7.6
+		},
+		kit: 'Гарантійний талон, Документація, Кабель для синхронізації, Телефон, Скріпка для виймання СІМ-карти'
 	}
 ]

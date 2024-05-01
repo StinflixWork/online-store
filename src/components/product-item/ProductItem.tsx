@@ -1,5 +1,6 @@
 import { FC } from 'react'
 
+import { Rate } from 'antd'
 import { toggleFavouriteProducts } from 'store/slices/catalogSlice.ts'
 
 import { useAppDispatch } from 'hooks/store-hooks.ts'
@@ -10,7 +11,6 @@ import { formatCurrency } from 'utils/formatCurrency.ts'
 
 import { ProductActions } from './product-actions/ProductActions.tsx'
 import { ProductImages } from './product-images/ProductImages.tsx'
-import { ProductRating } from './product-rating/ProductRating.tsx'
 import { ProductStatus } from './product-status/ProductStatus.tsx'
 
 type TypeProps = {
@@ -39,9 +39,7 @@ export const ProductItem: FC<TypeProps> = ({ product }) => {
 							<a href='#'>{product.title}</a>
 						</h4>
 					</div>
-					<div className='flex'>
-						<ProductRating />
-					</div>
+					<Rate disabled defaultValue={product.rate} />
 					<div className='flex items-center justify-between'>
 						<p className='text-gray-700 font-medium text-xl'>{price}</p>
 						<ProductActions
