@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
-import { IFilters } from 'interfaces/filters.interface.ts'
+import { IFilters, TypeSort } from 'interfaces/filters.interface.ts'
 
 const initialState: IFilters = {
 	filters: {
@@ -8,7 +8,7 @@ const initialState: IFilters = {
 		price: []
 	},
 	search: '',
-	sort: 'asc'
+	sort: 'rating'
 }
 
 export const filterSlice = createSlice({
@@ -23,9 +23,12 @@ export const filterSlice = createSlice({
 		},
 		setSearch: (state, action: PayloadAction<string>) => {
 			state.search = action.payload
+		},
+		setSort: (state, action: PayloadAction<TypeSort>) => {
+			state.sort = action.payload
 		}
 	}
 })
 
-export const { setFilterBrand, setFilterPrice, setSearch } = filterSlice.actions
+export const { setFilterBrand, setFilterPrice, setSearch, setSort } = filterSlice.actions
 export default filterSlice.reducer

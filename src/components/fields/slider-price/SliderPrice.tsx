@@ -10,7 +10,7 @@ export const SliderPrice: FC<TypeProps> = ({ setFilters }) => {
 	const MIN_PRICE = 0
 	const MAX_PRICE = 80000
 
-	const [price, setPrice] = useState<number[]>([4500, 50000])
+	const [price, setPrice] = useState<number[]>([4500, 60000])
 
 	const handlePriceSliderChange = (value: number[]) => {
 		setPrice(value)

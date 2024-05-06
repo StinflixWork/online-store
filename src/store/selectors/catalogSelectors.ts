@@ -1,6 +1,6 @@
 import { createSelector } from '@reduxjs/toolkit'
 
-import { IFilters } from 'interfaces/filters.interface.ts'
+import { ICompareFunction, IFilters } from 'interfaces/filters.interface.ts'
 import { TypeProductList } from 'interfaces/product.interface.ts'
 
 export const selectAllProducts = (state: { catalog: TypeProductList[] }) => state.catalog
@@ -21,15 +21,28 @@ export const selectBySearchProducts = createSelector(
 export const selectFilteredProducts = createSelector(
 	[selectFilters, selectBySearchProducts],
 	(filters, products) => {
+		const { brand } = filters.filters
+		const [minPrice, maxPrice] = filters.filters.price
+
+		const sortOptions: {
+			expensive: ICompareFunction
+			cheap: ICompareFunction
+			new: ICompareFunction
+			rating: ICompareFunction
+		} = {
+			expensive: (a, b) => b.price - a.price,
+			cheap: (a, b) => a.price - b.price,
+			new: (a, b) => b.id - a.id,
+			rating: (a, b) => b.rate - a.rate
+		}
+
 		const filteredProducts = products.filter(product => {
-			const brandMatch =
-				filters.filters.brand.length === 0 ||
-				filters.filters.brand.includes(product.brand.toLocaleLowerCase())
-			const priceMatch =
-				product.price > filters.filters.price[0] && product.price < filters.filters.price[1]
+			const brandMatch = brand.length === 0 || brand.includes(product.brand.toLocaleLowerCase())
+			const priceMatch = product.price > minPrice && product.price < maxPrice
+
 			return brandMatch && priceMatch
 		})
 
-		return filteredProducts
+		return filteredProducts.sort(sortOptions[filters.sort])
 	}
 )

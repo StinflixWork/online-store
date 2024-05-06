@@ -96,6 +96,7 @@ export type TypeImage = {
 	src: string
 	alt: string
 }
+
 export type TypeProductList =
 	| IProductComputer
 	| IProductLaptop
