@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { GiFlowers } from 'react-icons/gi'
 
 import { SearchProps } from 'antd/lib/input'
-import { selectBySearchProducts } from 'store/selectors/catalogSelectors.ts'
+import { selectAllProducts } from 'store/selectors/catalogSelectors.ts'
 import { setSearch } from 'store/slices/filterSlice.ts'
 
 import { useAppDispatch, useAppSelector } from 'hooks/store-hooks.ts'
@@ -13,7 +13,7 @@ import { SearchField } from './search-field/SearchField.tsx'
 
 export const Header = () => {
 	const [options, setOptions] = useState<{ value: string }[]>([])
-	const productsBySearchQuery = useAppSelector(selectBySearchProducts)
+	const products = useAppSelector(selectAllProducts)
 	const dispatch = useAppDispatch()
 
 	const onSearch: SearchProps['onSearch'] = (value, _e) =>
@@ -22,9 +22,13 @@ export const Header = () => {
 	// autocomplete, знайдені запроси зробити посиланням
 	const handleSearch = (searchText: string) => {
 		if (searchText) {
-			const filteredProductsTitles = productsBySearchQuery.map(filteredProduct => ({
-				value: filteredProduct.title
-			}))
+			const filteredProductsTitles = products
+				.filter(selectBySearchProducts =>
+					selectBySearchProducts.title.toLocaleLowerCase().includes(searchText.toLocaleLowerCase())
+				)
+				.map(filteredProduct => ({
+					value: filteredProduct.title
+				}))
 
 			setOptions(filteredProductsTitles)
 		} else {
