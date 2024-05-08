@@ -32,7 +32,11 @@ export const SearchField: FC<TypeProps> = ({ options, handleSearch, onSearchChan
 				}
 			}}
 		>
-			<AutoComplete style={{ width: 500 }} options={options} onSearch={handleSearch}>
+			<AutoComplete
+				style={{ width: 500, height: '100%' }}
+				options={options}
+				onSearch={handleSearch}
+			>
 				<Search
 					onSearch={onSearchChange}
 					placeholder='Я шукаю...'

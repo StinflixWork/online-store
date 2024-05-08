@@ -34,7 +34,7 @@ export const CatalogPage = () => {
 				<div className='pb-5'>
 					<SelectSort />
 				</div>
-				<div className='flex flex-wrap gap-y-10'>{catalogContent}</div>
+				<div className='flex flex-wrap'>{catalogContent}</div>
 			</div>
 		</div>
 	)

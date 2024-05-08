@@ -20,5 +20,5 @@ export const MyCheckbox: FC<TypeProps> = ({ setFilters }) => {
 		setFilters(checkedValues as string[])
 	}
 
-	return <Checkbox.Group options={options} onChange={onChange} />
+	return <Checkbox.Group options={options} onChange={onChange} className='flex flex-col' />
 }

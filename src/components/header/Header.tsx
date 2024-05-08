@@ -1,5 +1,7 @@
 import { useState } from 'react'
+import { FaRegHeart } from 'react-icons/fa'
 import { GiFlowers } from 'react-icons/gi'
+import { Link } from 'react-router-dom'
 
 import { SearchProps } from 'antd/lib/input'
 import { selectAllProducts } from 'store/selectors/catalogSelectors.ts'
@@ -42,9 +44,14 @@ export const Header = () => {
 				<p className='font-semibold uppercase text-[#222222]'>квітнуть знижки повесні</p>
 				<GiFlowers />
 			</div>
-			<div className='h-20 px-5 flex items-center justify-between bg-[#222222]'>
+			<div className='sticky top-0 h-20 px-5 flex items-center justify-between bg-[#222222]'>
 				<Logo />
-				<SearchField options={options} handleSearch={handleSearch} onSearchChange={onSearch} />
+				<div className='flex items-center gap-x-4'>
+					<SearchField options={options} handleSearch={handleSearch} onSearchChange={onSearch} />
+					<Link to='/favourites'>
+						<FaRegHeart color='#fff' size={22} />
+					</Link>
+				</div>
 			</div>
 		</header>
 	)

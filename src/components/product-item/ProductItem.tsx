@@ -34,7 +34,7 @@ export const ProductItem: FC<TypeProps> = ({ product }) => {
 			>
 				<ProductImages images={product.images} />
 				<div className='flex flex-col gap-y-2.5'>
-					<div className='h-9 overflow-hidden'>
+					<div className='h-10 overflow-hidden'>
 						<h4 className='leading-5'>
 							<a href='#'>{product.title}</a>
 						</h4>

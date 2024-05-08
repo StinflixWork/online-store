@@ -12,11 +12,11 @@ export const SidebarFilters = () => {
 		<div className='basis-[300px] border-r border-solid border-gray-300 px-4'>
 			<div className='flex flex-col gap-y-8'>
 				<div className='flex flex-col gap-y-2'>
-					<h5>Бренд</h5>
+					<h5 className='text-sm text-[#3e77aa] font-medium'>Бренд</h5>
 					<MyCheckbox setFilters={brand => dispatch(setFilterBrand(brand))} />
 				</div>
 				<div className='flex flex-col gap-y-2'>
-					<h5>Ціна</h5>
+					<h5 className='text-sm text-[#3e77aa] font-medium'>Ціна</h5>
 					<SliderPrice setFilters={price => dispatch(setFilterPrice(price))} />
 				</div>
 			</div>

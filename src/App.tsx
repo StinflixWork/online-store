@@ -1,13 +1,18 @@
+import { Route, Routes } from 'react-router-dom'
+
 import { Header } from 'components/header/Header.tsx'
 
-import { CatalogPage } from './pages'
+import { CatalogPage, FavouritePage } from './pages'
 
 function App() {
 	return (
-		<div className='min-h-full pb-52'>
+		<div className='min-h-full pb-52 overflow-clip'>
 			<Header />
 			<main className='py-7'>
-				<CatalogPage />
+				<Routes>
+					<Route path='/' element={<CatalogPage />} />
+					<Route path='/favourites' element={<FavouritePage />} />
+				</Routes>
 			</main>
 		</div>
 	)
