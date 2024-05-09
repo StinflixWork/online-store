@@ -38,6 +38,9 @@
       "interfaces/*": [
         "interfaces/*"
       ],
+      "pages/*": [
+        "pages/*"
+      ],
       "store/*": [
         "store/*"
       ],

@@ -13,7 +13,7 @@ export const FavouritePage = () => {
 
 	return (
 		<div className='px-5'>
-			<h2 className='mb-5 text-2xl'>Favourites:</h2>
+			<h2 className='mb-5 text-2xl'>Список бажаного</h2>
 			<div className='flex flex-wrap'>{favouriteProductsItems}</div>
 		</div>
 	)

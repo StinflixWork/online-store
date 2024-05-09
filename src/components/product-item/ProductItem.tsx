@@ -1,4 +1,5 @@
 import { FC } from 'react'
+import { Link } from 'react-router-dom'
 
 import { Rate } from 'antd'
 import { toggleFavouriteProducts } from 'store/slices/catalogSlice.ts'
@@ -36,7 +37,7 @@ export const ProductItem: FC<TypeProps> = ({ product }) => {
 				<div className='flex flex-col gap-y-2.5'>
 					<div className='h-10 overflow-hidden'>
 						<h4 className='leading-5'>
-							<a href='#'>{product.title}</a>
+							<Link to={`/product/${product.id}`}>{product.title}</Link>
 						</h4>
 					</div>
 					<Rate disabled defaultValue={product.rate} />

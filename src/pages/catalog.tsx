@@ -9,7 +9,7 @@ import { NotFoundProductsElement } from 'components/not-found/NotFoundProductsEl
 import { ProductItem } from 'components/product-item/ProductItem.tsx'
 import { SidebarFilters } from 'components/sidebar-filters/SidebarFilters.tsx'
 
-export const CatalogPage = () => {
+export const Catalog = () => {
 	const search = useAppSelector(state => state.filters.search)
 	const filteredProducts = useAppSelector(selectFilteredProducts)
 
